@@ -7,6 +7,10 @@
   </head>
   <body>
     <h1>Products</h1>
+    <form action="/products" method="GET">
+      <input type="number" name="maxPrice" placeholder="Filter by max price">
+      <button type="submit">Filter</button>
+    </form>
     <ul>
       <% products.forEach(product => { %>
       <li><%= product.name %> - $<%= product.price %></li>
