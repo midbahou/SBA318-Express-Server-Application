@@ -10,7 +10,7 @@ const morgan = require('morgan'); //Morgan: HTTP request logger middleware
 // Middleware 
 app.use(bodyParser.json());// Parse JSON data from requests
 app.use(bodyParser.urlencoded({ extended: true })); // parse form data (URL-encoded)
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files (e.g. CSS)
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the "public" folder (e.g. CSS)
 app.use(morgan('dev')); // use morgan for logging HTTP requests in 'dev' format
 
 // custom middleware
