@@ -33,6 +33,17 @@ router.post("/:id", (req, res) => {
   res.status(201).json(newCategory);
 });
 
+// PATCH /categories/:id - Partially update categories
+router.patch('/:id', (req, res) => {
+  const category = categories.find(c => c.id === parseInt(req.params.id))
+  if(!category) return res.status(404).json({ message: 'Category Not Found!' })
+  
+  const {name} = req.body;
+
+  if(name) category.name = name
+  res.json(category)
+})
+
 // DELETE /categories/:id - Delete a category by ID
 router.delete("/:id", (req, res) => {
   const categoryIndex = categories.findIndex(

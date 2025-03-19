@@ -34,6 +34,20 @@ router.post('/', (req, res) => {
 });
 
 
+// PATCH /users/:id - Partially update users
+router.patch('/:id', (req, res) => {
+    const user = users.find((u) => u.id === parseInt(req.params.id))
+    if(!user) return res.status(404).json({ message: "User Not Found!" })
+
+    const {name, email} = req.body;
+
+    if(name) user.name = name;
+    if(email) user.email = email;
+
+    res.json(user)
+})
+
+
 // DELETE /users/:id - Delete a user by ID
 router.delete('/:id', (req, res) => {
     const userIndex = users.findIndex(u => u.id === parseInt(req.params.id)); // Find user index
